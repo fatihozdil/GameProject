@@ -5,7 +5,7 @@ using UnityEngine;
 public class AniCons : MonoBehaviour
 {
     private Animator animator;
-    private float speed;
+    public float health = 100f;
 
     void Start()
     {
@@ -15,16 +15,20 @@ public class AniCons : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-    if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
+    if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)&& health > 0 )
         animator.SetBool("walk", true);
+        
     else
         animator.SetBool("walk", false);
-        
+        if(Input.GetKey(KeyCode.K)){
+            health = 0;
+            animator.SetBool("isDead", true );
+        }
 
     if(Input.GetButtonDown("Jump"))
         animator.SetBool("jump", true);
     else
         animator.SetBool("jump", false);
-        
+
     }
 }

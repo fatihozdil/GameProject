@@ -17,15 +17,21 @@ public class ThirdPersonMovement : MonoBehaviour
 
     float turnSmoothVelocity;
     Vector3 jumpv;
+    AniCons aniCons ; 
+
+    void Start(){
+        aniCons = GetComponent<AniCons>();
+    }
 
     // Update is called once per frame
     void Update()
     {
+  if(aniCons.health > 0){
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if(direction.magnitude >= 0.1f) 
+        if(direction.magnitude >= 0.1f ) 
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -44,5 +50,6 @@ public class ThirdPersonMovement : MonoBehaviour
         }
         jumpv.y += gravityValue * Time.deltaTime;
         controller.Move(jumpv * Time.deltaTime);
+  }
     }
 }
