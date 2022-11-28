@@ -1615,7 +1615,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2050593371}
   cam: {fileID: 1061091957}
-  speed: 0.8
+  speed: 6
   turnSmoothTime: 0.1
 --- !u!143 &2050593371
 CharacterController:
@@ -1647,6 +1647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f3417147e07e214dbabf7bdd9272261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &2062799974
 GameObject:
   m_ObjectHideFlags: 0
