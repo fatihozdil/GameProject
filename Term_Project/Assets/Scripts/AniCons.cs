@@ -6,6 +6,7 @@ public class AniCons : MonoBehaviour
 {
     private Animator animator;
     public float health = 100f;
+    public CharacterController controller;
 
     void Start()
     {
