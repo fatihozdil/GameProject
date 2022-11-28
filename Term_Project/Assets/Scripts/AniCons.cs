@@ -20,10 +20,11 @@ public class AniCons : MonoBehaviour
         
     else
         animator.SetBool("walk", false);
-        if(Input.GetKey(KeyCode.K)){
-            health = 0;
-            animator.SetBool("isDead", true );
-        }
+    
+    if(Input.GetKey(KeyCode.K)){
+        health = 0;
+        animator.SetBool("isDead", true );
+    }
 
     if(Input.GetButtonDown("Jump"))
         animator.SetBool("jump", true);
