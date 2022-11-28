@@ -11,24 +11,26 @@ public class AniCons : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    
+
 
     // Update is called once per frame
-    void Update() {
-    if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)&& health > 0 )
-        animator.SetBool("walk", true);
-        
-    else
-        animator.SetBool("walk", false);
-        if(Input.GetKey(KeyCode.K)){
+    void Update()
+    {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && health > 0)
+            animator.SetBool("walk", true);
+
+        else
+            animator.SetBool("walk", false);
+        if (Input.GetKey(KeyCode.K))
+        {
             health = 0;
-            animator.SetBool("isDead", true );
+            animator.SetBool("isDead", true);
         }
 
-    if(Input.GetButtonDown("Jump"))
-        animator.SetBool("jump", true);
-    else
-        animator.SetBool("jump", false);
+        if (Input.GetButtonDown("Jump"))
+            animator.SetBool("jump", true);
+        else
+            animator.SetBool("jump", false);
 
     }
 }
