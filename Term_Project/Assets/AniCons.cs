@@ -20,5 +20,11 @@ public class AniCons : MonoBehaviour
     else
         animator.SetBool("walk", false);
         
+
+    if(Input.GetButtonDown("Jump"))
+        animator.SetBool("jump", true);
+    else
+        animator.SetBool("jump", false);
+        
     }
 }
