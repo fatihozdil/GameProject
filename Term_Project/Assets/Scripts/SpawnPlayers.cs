@@ -5,10 +5,10 @@ using Photon.Pun;
 public class SpawnPlayers : MonoBehaviour
 {
     public GameObject playerPrefab;
-    public GameObject CMFreeLookPrefab;
-    public GameObject MainCameraPrefab;
+    public Transform cam;
 
 
+    // boundaries to generate random location for the player
     public float minX;
     public float maxX;
     public float minZ;
@@ -19,10 +19,10 @@ public class SpawnPlayers : MonoBehaviour
     private Quaternion _lookRotation;
     private Vector3 _direction;
 
-
     // Start is called before the first frame update
     void Start()
     {
+
         float randomX = Random.Range(minX, maxX);
         float randomZ = Random.Range(minZ, maxZ);
         Vector3 randomPosition = new Vector3(randomX, 40f, randomZ);
@@ -35,6 +35,9 @@ public class SpawnPlayers : MonoBehaviour
 
         //playerPrefab.transform.LookAt(targetPosition);
         Vector3 newPosition = new Vector3(0, 40f, 0);
+
+
+        playerPrefab.GetComponent<ThirdPersonMovement>().cam = cam;
         PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, _lookRotation, 0);
         //PhotonNetwork.Instantiate(CMFreeLookPrefab.name, newPosition, _lookRotation, 0);
         //PhotonNetwork.Instantiate(MainCameraPrefab.name, newPosition, _lookRotation, 0);
