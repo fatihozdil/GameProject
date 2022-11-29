@@ -7,6 +7,7 @@ public class AniCons : MonoBehaviour
     private Animator animator;
     public float health = 100f;
     public CharacterController controller;
+    public bool isRoll =false;
 
     void Start()
     {
@@ -31,12 +32,19 @@ public class AniCons : MonoBehaviour
             animator.SetBool("isDead", false);
 
         if (Input.GetButtonDown("Jump")&&health>0)
+        {
+            if(!animator.GetCurrentAnimatorStateInfo(0).IsName("Male Jump Up")&&!animator.GetCurrentAnimatorStateInfo(0).IsName("Male Fall")&&
+            !animator.GetCurrentAnimatorStateInfo(0).IsName("Male Land"))
             animator.SetBool("jump", true);
+        }
         else
             animator.SetBool("jump", false);
             
             if(Input.GetKey(KeyCode.Q)&& health>0){
+                if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Male Roll")&&!animator.GetCurrentAnimatorStateInfo(0).IsName("Male Idle 0"))
+             {
                 animator.SetBool("roll",true);
+             }
             }
             else
             animator.SetBool("roll",false);

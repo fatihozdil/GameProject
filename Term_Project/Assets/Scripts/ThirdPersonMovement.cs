@@ -35,7 +35,7 @@ public class ThirdPersonMovement : MonoBehaviour
             float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-            if (controller.isGrounded)
+            if (controller.isGrounded&&speed!=0)
                 speed = tempspeed;
 
             if(Input.GetButtonDown("Jump") && controller.isGrounded)
