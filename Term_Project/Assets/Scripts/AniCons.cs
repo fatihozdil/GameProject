@@ -22,7 +22,7 @@ public class AniCons : MonoBehaviour
         else
             animator.SetBool("walk", false);
 
-        if (Input.GetKey(KeyCode.K))
+        if (Input.GetKey(KeyCode.K)&&health>0)
         {
             health = 0;
             animator.SetBool("isDead", true);
@@ -30,10 +30,16 @@ public class AniCons : MonoBehaviour
         else
             animator.SetBool("isDead", false);
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump")&&health>0)
             animator.SetBool("jump", true);
         else
             animator.SetBool("jump", false);
+            
+            if(Input.GetKey(KeyCode.Q)&& health>0){
+                animator.SetBool("roll",true);
+            }
+            else
+            animator.SetBool("roll",false);
 
     }
 }
