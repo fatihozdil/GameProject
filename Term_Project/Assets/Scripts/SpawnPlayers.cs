@@ -40,8 +40,19 @@ public class SpawnPlayers : MonoBehaviour
         // initiate player 
         GameObject clonePlayer = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, _lookRotation, 0);
 
+        // set main camera to inactive
+        mainCamera.gameObject.SetActive(false);
 
-        InitializeCMFreeLook(clonePlayer, CMFreeLook, mainCamera);
+        // check if player is local player
+        if (clonePlayer.GetComponent<PhotonView>().IsMine)
+        {
+            // set the player to follow the camera
+            InitializeCMFreeLook(clonePlayer, CMFreeLook, mainCamera);
+
+            // set main camera to inactive
+            mainCamera.gameObject.SetActive(true);
+        }
+
 
     }
 
