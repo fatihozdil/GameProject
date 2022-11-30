@@ -34,14 +34,15 @@ public class ThirdPersonMovement : MonoBehaviour
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-            if (controller.isGrounded&&speed!=0)
+            //Return speed to the old value after landing so player won't get faster with every jump
+            if (controller.isGrounded)
                 speed = tempspeed;
 
             if(Input.GetButtonDown("Jump") && controller.isGrounded)
             {
                 jumpv = new Vector3(0f, 0f, 0f);
                 jumpv.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+                //Increase speed the propel the player forward
                 speed = speed * propel;
             }
             
@@ -56,12 +57,12 @@ public class ThirdPersonMovement : MonoBehaviour
 
 
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
+                //Jump while moving
                 controller.Move(jumpv * Time.deltaTime);
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
             else 
-                controller.Move(jumpv * Time.deltaTime);
+                controller.Move(jumpv * Time.deltaTime); //Jump while static
             
         }
     }

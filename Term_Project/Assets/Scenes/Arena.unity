@@ -1546,7 +1546,7 @@ MonoBehaviour:
   speed: 0.8
   propel: 4
   gravityValue: -9.81
-  jumpHeight: 1.5
+  jumpHeight: 2
   turnSmoothTime: 0.1
 --- !u!143 &2050593371
 CharacterController:
@@ -1580,7 +1580,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   controller: {fileID: 2050593371}
-  isRoll: 0
+--- !u!114 &2050593375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050593369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b479e4aa2f4352e408309e6f6c615955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2062799974
 GameObject:
   m_ObjectHideFlags: 0
