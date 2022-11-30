@@ -45,6 +45,7 @@ public class Combat : MonoBehaviour
         //Determine directions
         if (xDragEnd > 0.5f && Mathf.Abs(yDragEnd) < Mathf.Abs(xDragEnd)) {
             Debug.Log("left attack");
+            animator.SetBool("left", true);
             xDragEnd = 0f;
             yDragEnd = 0f;
         }
@@ -68,9 +69,11 @@ public class Combat : MonoBehaviour
         }
         else {
             //Set animations false
+            animator.SetBool("left", false);
             animator.SetBool("right", false);
             animator.SetBool("down", false);
             animator.SetBool("up", false);
+
         }
             
     }
