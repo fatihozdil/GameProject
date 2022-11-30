@@ -5,8 +5,8 @@ using Photon.Pun;
 public class SpawnPlayers : MonoBehaviour
 {
     public GameObject playerPrefab;
-    public Transform cam;
-
+    public Cinemachine.CinemachineFreeLook CMFreeLook;
+    public Camera mainCamera;
 
     // boundaries to generate random location for the player
     public float minX;
@@ -22,31 +22,36 @@ public class SpawnPlayers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        // pick random ponint for x and z
         float randomX = Random.Range(minX, maxX);
         float randomZ = Random.Range(minZ, maxZ);
+
+        // generate Vector3 for random position
         Vector3 randomPosition = new Vector3(randomX, 40f, randomZ);
+
         // find the vector pointing from our position to the target
         _direction = (targetPosition - randomPosition).normalized;
-        Debug.Log(_direction);
+
         //create the rotation we need to be in to look at the target
         _lookRotation = Quaternion.LookRotation(_direction);
         _lookRotation.eulerAngles = new Vector3(0, _lookRotation.eulerAngles.y, 0);
 
-        //playerPrefab.transform.LookAt(targetPosition);
-        Vector3 newPosition = new Vector3(0, 40f, 0);
+
+        // initiate player 
+        GameObject clonePlayer = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, _lookRotation, 0);
 
 
-        playerPrefab.GetComponent<ThirdPersonMovement>().cam = cam;
-        PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, _lookRotation, 0);
-        //PhotonNetwork.Instantiate(CMFreeLookPrefab.name, newPosition, _lookRotation, 0);
-        //PhotonNetwork.Instantiate(MainCameraPrefab.name, newPosition, _lookRotation, 0);
+        InitializeCMFreeLook(clonePlayer, CMFreeLook, mainCamera);
 
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void InitializeCMFreeLook(GameObject player, Cinemachine.CinemachineFreeLook CMFreeLook, Camera mainCamera)
     {
+        CMFreeLook.Follow = player.transform;
+        CMFreeLook.LookAt = player.transform;
+
+        player.GetComponent<ThirdPersonMovement>().cam = mainCamera.transform;
 
     }
 }

@@ -1502,7 +1502,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1253591561516750093, guid: 3acfa91e6e342394c90b7b10afb8342f,
     type: 3}
-  cam: {fileID: 27811815}
+  CMFreeLook: {fileID: 27811814}
+  mainCamera: {fileID: 1061091956}
   minX: -10
   maxX: 10
   minZ: -10
