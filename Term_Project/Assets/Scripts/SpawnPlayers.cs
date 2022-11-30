@@ -46,7 +46,7 @@ public class SpawnPlayers : MonoBehaviour
         photonAnimatorView.SetParameterSynchronized("jump", PhotonAnimatorView.ParameterType.Bool, PhotonAnimatorView.SynchronizeType.Discrete);
         photonAnimatorView.SetParameterSynchronized("isDead", PhotonAnimatorView.ParameterType.Bool, PhotonAnimatorView.SynchronizeType.Discrete);
         photonAnimatorView.SetParameterSynchronized("Blend", PhotonAnimatorView.ParameterType.Float, PhotonAnimatorView.SynchronizeType.Discrete);
-        
+        //photonAnimatorView.SetLayerSynchronized(0, PhotonAnimatorView.SynchronizeType.Discrete);
         //// set main camera to inactive
         //mainCamera.gameObject.SetActive(false);
 
