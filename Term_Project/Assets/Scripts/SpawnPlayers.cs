@@ -18,7 +18,7 @@ public class SpawnPlayers : MonoBehaviour
 
     private Quaternion _lookRotation;
     private Vector3 _direction;
-
+    private PhotonAnimatorView photonAnimatorView;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,8 +40,15 @@ public class SpawnPlayers : MonoBehaviour
         // initiate player 
         GameObject clonePlayer = PhotonNetwork.Instantiate(playerPrefab.name, randomPosition, _lookRotation, 0);
 
-        // set main camera to inactive
-        mainCamera.gameObject.SetActive(false);
+        // sync animations
+        photonAnimatorView = clonePlayer.GetComponent<PhotonAnimatorView>();
+        photonAnimatorView.SetParameterSynchronized("walk", PhotonAnimatorView.ParameterType.Bool, PhotonAnimatorView.SynchronizeType.Discrete);
+        photonAnimatorView.SetParameterSynchronized("jump", PhotonAnimatorView.ParameterType.Bool, PhotonAnimatorView.SynchronizeType.Discrete);
+        photonAnimatorView.SetParameterSynchronized("isDead", PhotonAnimatorView.ParameterType.Bool, PhotonAnimatorView.SynchronizeType.Discrete);
+        photonAnimatorView.SetParameterSynchronized("Blend", PhotonAnimatorView.ParameterType.Float, PhotonAnimatorView.SynchronizeType.Discrete);
+        
+        //// set main camera to inactive
+        //mainCamera.gameObject.SetActive(false);
 
         // check if player is local player
         if (clonePlayer.GetComponent<PhotonView>().IsMine)
@@ -49,8 +56,8 @@ public class SpawnPlayers : MonoBehaviour
             // set the player to follow the camera
             InitializeCMFreeLook(clonePlayer, CMFreeLook, mainCamera);
 
-            // set main camera to inactive
-            mainCamera.gameObject.SetActive(true);
+            //// set main camera to inactive
+            //mainCamera.gameObject.SetActive(true);
         }
 
 

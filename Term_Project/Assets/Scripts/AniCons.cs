@@ -24,6 +24,7 @@ public class AniCons : MonoBehaviour
             {
 
                 animator.SetBool("walk", true);
+                
             }
 
             else if (Input.GetKey(KeyCode.K))
@@ -39,18 +40,11 @@ public class AniCons : MonoBehaviour
             else
             {
                 animator.SetBool("walk", false);
-                animator.SetBool("walk", false);
+                animator.SetBool("isDead", false);
                 animator.SetBool("jump", false);
 
             }
         }
-        else
-        {
-            animator.SetBool("walk", false);
-            animator.SetBool("walk", false);
-            animator.SetBool("jump", false);
-
-        }
-
+    
     }
 }
