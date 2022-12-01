@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class AniCons : MonoBehaviour
 {
     private Animator animator;
@@ -9,15 +9,19 @@ public class AniCons : MonoBehaviour
     public CharacterController controller;
     public bool isRoll =false;
 
+    PhotonView photonView;
     void Start()
     {
         animator = GetComponent<Animator>();
+        photonView = GetComponent<PhotonView>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
+	if (photonView.IsMine)
+        {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && health > 0)
             animator.SetBool("walk", true);
         else
@@ -49,5 +53,8 @@ public class AniCons : MonoBehaviour
             else
             animator.SetBool("roll",false);
 
+            
+        }
+    
     }
 }

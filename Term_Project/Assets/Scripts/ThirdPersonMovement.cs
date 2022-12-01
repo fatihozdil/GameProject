@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Photon.Pun;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
@@ -20,17 +20,24 @@ public class ThirdPersonMovement : MonoBehaviour
 
     float turnSmoothVelocity;
     Vector3 jumpv;
-    AniCons aniCons ; 
+    AniCons aniCons;
 
-    void Start(){
+
+    PhotonView photonView;
+
+    void Start()
+    {
         aniCons = GetComponent<AniCons>();
         tempspeed = speed;
+        photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(aniCons.health > 0){
+        if (photonView.IsMine && aniCons.health > 0)
+        {
+
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
