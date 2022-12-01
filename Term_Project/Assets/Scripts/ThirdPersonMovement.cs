@@ -45,18 +45,18 @@ public class ThirdPersonMovement : MonoBehaviour
             if (controller.isGrounded)
                 speed = tempspeed;
 
-            if(Input.GetButtonDown("Jump") && controller.isGrounded)
+            if (Input.GetButtonDown("Jump") && controller.isGrounded)
             {
                 jumpv = new Vector3(0f, 0f, 0f);
                 jumpv.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
                 //Increase speed the propel the player forward
                 speed = speed * propel;
             }
-            
+
 
             jumpv.y += gravityValue * Time.deltaTime;
 
-            if(direction.magnitude >= 0.1f ) 
+            if (direction.magnitude >= 0.1f)
             {
                 float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
                 float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -68,9 +68,9 @@ public class ThirdPersonMovement : MonoBehaviour
                 controller.Move(jumpv * Time.deltaTime);
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
-            else 
+            else
                 controller.Move(jumpv * Time.deltaTime); //Jump while static
-            
+
         }
     }
 }

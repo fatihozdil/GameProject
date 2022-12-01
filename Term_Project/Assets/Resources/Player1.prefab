@@ -2172,6 +2172,7 @@ GameObject:
   - component: {fileID: 1253073700308539094}
   - component: {fileID: 2995990114242831264}
   - component: {fileID: -5724143681475366335}
+  - component: {fileID: 5708749635734182299}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -2273,6 +2274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  controller: {fileID: 0}
+  isRoll: 0
 --- !u!143 &1253073700308539089
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2306,6 +2309,7 @@ MonoBehaviour:
   controller: {fileID: 1253073700308539089}
   cam: {fileID: 0}
   speed: 0.8
+  propel: 4
   gravityValue: -9.81
   jumpHeight: 2
   turnSmoothTime: 0.1
@@ -2393,9 +2397,41 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 1
     Name: Blend
+  - Type: 4
+    SynchronizeType: 0
+    Name: onGround
+  - Type: 4
+    SynchronizeType: 0
+    Name: roll
+  - Type: 4
+    SynchronizeType: 0
+    Name: up
+  - Type: 4
+    SynchronizeType: 0
+    Name: right
+  - Type: 4
+    SynchronizeType: 0
+    Name: down
+  - Type: 4
+    SynchronizeType: 0
+    Name: left
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
+  - SynchronizeType: 0
+    LayerIndex: 1
+--- !u!114 &5708749635734182299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253591561516750093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b479e4aa2f4352e408309e6f6c615955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1253618274575303527
 GameObject:
   m_ObjectHideFlags: 0
