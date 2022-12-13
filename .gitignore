@@ -58,3 +58,12 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+
+
+.DS_Store
+
+Term_Project/Assets/StreamingAssets/build_info
+Term_Project/Assets/StreamingAssets/build_info.meta
+build_info.meta
+Term_Project/Assets/Agora-RTC-Plugin
+

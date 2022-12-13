@@ -7,10 +7,13 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
+    public GameObject voiceChatManager;
+    private VoiceChatManager voiceChatManagerScript;
 
     // Start is called before the first frame update
     void Start()
     {
+        voiceChatManagerScript = voiceChatManager.GetComponent<VoiceChatManager>();
 
     }
 
@@ -35,6 +38,20 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        // get related room name
+        voiceChatManagerScript.LoadAssetData(PhotonNetwork.CurrentRoom.Name);
+
+        // init rtc engine
+        voiceChatManagerScript.InitRtcEngine();
+
+        voiceChatManagerScript.SetBasicConfiguration();
+
+        // get audio devices;
+        voiceChatManagerScript.GetAudioPlaybackDevice();
+
+        // join channel
+        voiceChatManagerScript.JoinChannel();
+        // load the game scene
         PhotonNetwork.LoadLevel("Arena");
     }
 
