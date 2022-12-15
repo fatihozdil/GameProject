@@ -79,9 +79,10 @@ public class Combat : MonoBehaviour
             animator.SetBool("right", false);
             animator.SetBool("down", false);
             animator.SetBool("up", false);
-            coll.enabled = false;
-
-        }
-            
+            if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && !animator.IsInTransition(0)) {
+                coll.enabled = false;
+            }
+        }         
     }
+
 }
