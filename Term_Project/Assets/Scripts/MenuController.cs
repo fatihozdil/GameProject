@@ -8,9 +8,8 @@ public class MenuController : MonoBehaviour
 
     public GameObject MainBg;
 
-
-    public void PlayButton(){
-        SceneManager.LoadScene(1);   
+    public void ButtonAction(int num){
+        SceneManager.LoadScene(num);
     }
 
     public void QuitButton(){
@@ -19,13 +18,6 @@ public class MenuController : MonoBehaviour
 
     public void ChangeBack(){
         MainBg.SetActive(false);
-    }
-    
-    public void MenuButton(){
-        SceneManager.LoadScene(0);
-    }
-    public void LobbyButton(){
-        SceneManager.LoadScene(3);
     }
 
 }
