@@ -108,7 +108,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1255524288454421695}
   - component: {fileID: 1190189061050167367}
-  - component: {fileID: 3274366840329705541}
   m_Layer: 0
   m_Name: Set Character_Male_Legs_2
   m_TagString: Untagged
@@ -195,20 +194,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.35093987, y: -0.029946357, z: -0.0000011175871}
     m_Extent: {x: 0.51829517, y: 0.18020964, z: 0.29485017}
   m_DirtyAABB: 0
---- !u!64 &3274366840329705541
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252019057532485917}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: a48c0a1c97d48e7419d41fe8e176ae51, type: 3}
 --- !u!1 &1252020233838708753
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +694,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1255710332059567631}
   - component: {fileID: 1191696459309553361}
-  - component: {fileID: 4517827988038345705}
   m_Layer: 0
   m_Name: Set Character_Male_Torso_3
   m_TagString: Untagged
@@ -833,20 +817,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.35948557, y: -0.030234873, z: 0.0000002682209}
     m_Extent: {x: 0.39332092, y: 0.19044963, z: 0.60804343}
   m_DirtyAABB: 0
---- !u!64 &4517827988038345705
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1252108834773744625}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: e8eb09b19391bfe4eab8554eac44634f, type: 3}
 --- !u!1 &1252109276655820717
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,6 +2240,8 @@ GameObject:
   - component: {fileID: 2995990114242831264}
   - component: {fileID: -5724143681475366335}
   - component: {fileID: 5708749635734182299}
+  - component: {fileID: 5209268452492603508}
+  - component: {fileID: 3824775797581906314}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -2386,13 +2358,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.8
+  m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!114 &1253073700308539088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2531,6 +2503,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b479e4aa2f4352e408309e6f6c615955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &5209268452492603508
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253591561516750093}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.2
+  m_Height: 0.2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.6, z: 0}
+--- !u!54 &3824775797581906314
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253591561516750093}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &1253618274575303527
 GameObject:
   m_ObjectHideFlags: 0
@@ -3644,7 +3646,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1255559460186601283}
   - component: {fileID: 1190305522118243647}
-  - component: {fileID: 6102966436329058210}
   m_Layer: 0
   m_Name: Set Character_Male_Head_3
   m_TagString: Untagged
@@ -3727,20 +3728,6 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.082499, y: 0.034377918, z: 0.00000011920929}
     m_Extent: {x: 0.12982272, y: 0.12083177, z: 0.11218358}
   m_DirtyAABB: 0
---- !u!64 &6102966436329058210
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253807617634775041}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: ac9e5936b8a63bf4f977287e27381de6, type: 3}
 --- !u!1 &1253813001046932319
 GameObject:
   m_ObjectHideFlags: 0
