@@ -10,10 +10,12 @@ public class Combat : MonoBehaviour
     private float yDragStart;
     private float xDragEnd = 0f;
     private float yDragEnd = 0f;
+    public Collider coll;
     //public CinemachineFreeLook freeLook;
     void Start()
     {
        animator = GetComponent<Animator>(); 
+       coll.enabled = false;
     }
 
     // Update is called once per frame
@@ -44,24 +46,28 @@ public class Combat : MonoBehaviour
         }
         //Determine directions
         if (xDragEnd > 0.5f && Mathf.Abs(yDragEnd) < Mathf.Abs(xDragEnd)) {
+            coll.enabled = true;
             Debug.Log("left attack");
             animator.SetBool("left", true);
             xDragEnd = 0f;
             yDragEnd = 0f;
         }
         else if (xDragEnd < -0.5f && Mathf.Abs(yDragEnd) < Mathf.Abs(xDragEnd)) {
+            coll.enabled = true;
             Debug.Log("right attack");
             animator.SetBool("right", true);
             xDragEnd = 0f;
             yDragEnd = 0f;
         }
         else if (yDragEnd > 0.5f && Mathf.Abs(xDragEnd) < Mathf.Abs(yDragEnd)) {
+            coll.enabled = true;
             Debug.Log("down attack");
             animator.SetBool("down", true);
             yDragEnd = 0f;
             xDragEnd = 0f;
         }
         else if (yDragEnd < -0.5f && Mathf.Abs(xDragEnd) < Mathf.Abs(yDragEnd)) {
+            coll.enabled = true;
             Debug.Log("up attack");
             animator.SetBool("up", true);
             yDragEnd = 0f;
@@ -73,6 +79,7 @@ public class Combat : MonoBehaviour
             animator.SetBool("right", false);
             animator.SetBool("down", false);
             animator.SetBool("up", false);
+            coll.enabled = false;
 
         }
             
