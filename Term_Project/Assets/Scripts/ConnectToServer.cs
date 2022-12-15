@@ -11,6 +11,16 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void SceneChangeButton(int sceneNumber){
+        SceneManager.LoadScene(sceneNumber);
+    }
+
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.JoinLobby();
@@ -18,11 +28,5 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public override void OnJoinedLobby()
     {
         SceneManager.LoadScene("Lobby");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
