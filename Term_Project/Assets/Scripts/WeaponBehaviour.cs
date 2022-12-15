@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,12 +13,13 @@ public class WeaponBehaviour : MonoBehaviour
     void Update () {
 
     }
-     void OnCollisionEnter(Collision col)
+
+    void OnCollisionEnter(Collision col)
     {
       // if(col.gameObject.tag == "Human")
        // {
-
-            Debug.Log("Thats a hit");
+        col.gameObject.GetComponent<AniCons>().health -= 10;
+        Debug.Log("Health " + col.gameObject.GetComponent<AniCons>().health);
         //}
     }
 }

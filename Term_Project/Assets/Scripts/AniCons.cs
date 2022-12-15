@@ -26,11 +26,12 @@ public class AniCons : MonoBehaviour
                 animator.SetBool("walk", true);
             else
                 animator.SetBool("walk", false);
-
-            if (Input.GetKey(KeyCode.K) && health > 0)
+            //repeadet execution
+            if (Input.GetKey(KeyCode.K) || health == 0)
             {
-                health = 0;
                 animator.SetBool("isDead", true);
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && !animator.IsInTransition(0)) 
+                   health -= 100;
             }
             else
                 animator.SetBool("isDead", false);
