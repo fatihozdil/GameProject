@@ -20,7 +20,7 @@ public class WeaponBehaviour : MonoBehaviour
         // if(col.gameObject.tag == "Human")
         // {
         col.gameObject.GetComponent<PlayerStats>().health -= 10;
-        Debug.Log("Health " + col.gameObject.GetComponent<PlayerStats>().health);
+        Debug.Log("Health " + col.gameObject.name + col.gameObject.GetComponent<PlayerStats>().health);
         //}
     }
 }

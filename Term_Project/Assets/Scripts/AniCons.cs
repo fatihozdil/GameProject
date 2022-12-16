@@ -30,7 +30,7 @@ public class AniCons : MonoBehaviour
             else
                 animator.SetBool("walk", false);
             //repeadet execution
-            if (Input.GetKey(KeyCode.K) || playerStats.health == 0)
+            if (Input.GetKey(KeyCode.K) || playerStats.health <= 0 && playerStats.health >= -100)
             {
                 animator.SetBool("isDead", true);
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && !animator.IsInTransition(0)) 
