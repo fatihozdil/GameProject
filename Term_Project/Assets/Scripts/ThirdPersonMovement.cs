@@ -6,51 +6,47 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
-
-    public float speed = 0.8f;
+    public float playerSpeed;
     private float tempspeed;
-
     public float propel = 4f;
-
     public float gravityValue = -9.81f;
-
     public float jumpHeight = 1.0f;
-
     public float turnSmoothTime = 0.1f;
-
     float turnSmoothVelocity;
     Vector3 jumpv;
     AniCons aniCons;
+    private PlayerStats playerStats;
 
 
     PhotonView photonView;
 
     void Start()
     {
-        aniCons = GetComponent<AniCons>();
-        tempspeed = speed;
+        playerStats = GetComponent<PlayerStats>();
+        playerSpeed = playerStats.speed;
+        tempspeed = playerSpeed;
         photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine && aniCons.health > 0)
+        if (photonView.IsMine && playerStats.health > 0)
         {
 
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-            //Return speed to the old value after landing so player won't get faster with every jump
+            //Return playerSpeed to the old value after landing so player won't get faster with every jump
             if (controller.isGrounded)
-                speed = tempspeed;
+                playerSpeed = tempspeed;
 
             if (Input.GetButtonDown("Jump") && controller.isGrounded)
             {
                 jumpv = new Vector3(0f, 0f, 0f);
                 jumpv.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-                //Increase speed the propel the player forward
-                speed = speed * propel;
+                //Increase playerSpeed the propel the player forward
+                playerSpeed = playerSpeed * propel;
             }
 
 
@@ -66,7 +62,7 @@ public class ThirdPersonMovement : MonoBehaviour
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 //Jump while moving
                 controller.Move(jumpv * Time.deltaTime);
-                controller.Move(moveDir.normalized * speed * Time.deltaTime);
+                controller.Move(moveDir.normalized * playerSpeed * Time.deltaTime);
             }
             else
                 controller.Move(jumpv * Time.deltaTime); //Jump while static

@@ -4,39 +4,43 @@ using UnityEngine;
 using Photon.Pun;
 public class AniCons : MonoBehaviour
 {
+    private PlayerStats playerStats;
     private Animator animator;
-    public float health = 100f;
+    public float playerHealth;
     public CharacterController controller;
     public bool isRoll = false;
 
     PhotonView photonView;
     void Start()
     {
+        playerStats = GetComponent<PlayerStats>();
         animator = GetComponent<Animator>();
         photonView = GetComponent<PhotonView>();
+        playerHealth = playerStats.health;
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        
         if (photonView.IsMine)
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && health > 0)
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && playerHealth > 0)
                 animator.SetBool("walk", true);
             else
                 animator.SetBool("walk", false);
             //repeadet execution
-            if (Input.GetKey(KeyCode.K) || health == 0)
+            if (Input.GetKey(KeyCode.K) || playerHealth == 0)
             {
                 animator.SetBool("isDead", true);
                 if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && !animator.IsInTransition(0)) 
-                   health -= 100;
+                   playerHealth -= 100;
             }
             else
                 animator.SetBool("isDead", false);
 
-            if (Input.GetButtonDown("Jump") && health > 0)
+            if (Input.GetButtonDown("Jump") && playerHealth > 0)
             {
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Male Jump Up") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Male Fall") &&
                 !animator.GetCurrentAnimatorStateInfo(0).IsName("Male Land"))
@@ -45,7 +49,7 @@ public class AniCons : MonoBehaviour
             else
                 animator.SetBool("jump", false);
 
-            if (Input.GetKey(KeyCode.Q) && health > 0)
+            if (Input.GetKey(KeyCode.Q) && playerHealth > 0)
             {
                 if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Male Roll") && !animator.GetCurrentAnimatorStateInfo(0).IsName("Male Idle 0"))
                 {
