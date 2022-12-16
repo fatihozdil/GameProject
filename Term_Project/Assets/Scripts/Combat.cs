@@ -21,6 +21,13 @@ public class Combat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetMouseButton(1)){
+        animator.SetBool("shieldUp", true);
+    }
+    else{
+        animator.SetBool("shieldUp", false);
+    }
+
         if( Input.GetMouseButton(0) )
         {
             //cinemachineFL.m_XAxis.m_MaxSpeed = 0.0f;
