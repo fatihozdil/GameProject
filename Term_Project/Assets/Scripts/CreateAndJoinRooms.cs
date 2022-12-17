@@ -39,19 +39,19 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        // get related room name
-        voiceChatManagerScript.LoadAssetData(PhotonNetwork.CurrentRoom.Name);
+        //// get related room name
+        //voiceChatManagerScript.LoadAssetData(PhotonNetwork.CurrentRoom.Name);
 
-        // init rtc engine
-        voiceChatManagerScript.InitRtcEngine();
+        //// init rtc engine
+        //voiceChatManagerScript.InitRtcEngine();
 
-        voiceChatManagerScript.SetBasicConfiguration();
+        //voiceChatManagerScript.SetBasicConfiguration();
 
-        // get audio devices;
-        voiceChatManagerScript.GetAudioPlaybackDevice();
+        //// get audio devices;
+        //voiceChatManagerScript.GetAudioPlaybackDevice();
 
-        // join channel
-        voiceChatManagerScript.JoinChannel();
+        //// join channel
+        //voiceChatManagerScript.JoinChannel();
         // load the game scene
         PhotonNetwork.LoadLevel("Arena");
     }

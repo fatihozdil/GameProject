@@ -6,7 +6,6 @@ public class AniCons : MonoBehaviour
 {
     private PlayerStats playerStats;
     private Animator animator;
-    public float playerHealth;
     public CharacterController controller;
     public bool isRoll = false;
 
@@ -22,7 +21,8 @@ public class AniCons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("anicons health" + playerStats.health);
+
         if (photonView.IsMine)
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D) && playerStats.health > 0)
@@ -33,8 +33,8 @@ public class AniCons : MonoBehaviour
             if (Input.GetKey(KeyCode.K) || playerStats.health <= 0 && playerStats.health >= -100)
             {
                 animator.SetBool("isDead", true);
-                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && !animator.IsInTransition(0)) 
-                   playerStats.health -= 100;
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && !animator.IsInTransition(0))
+                    playerStats.health -= 100;
             }
             else
                 animator.SetBool("isDead", false);
@@ -59,6 +59,17 @@ public class AniCons : MonoBehaviour
                 animator.SetBool("roll", false);
 
 
+        }
+        else
+        {
+            if (playerStats.health <= 0 && playerStats.health >= -100)
+            {
+                animator.SetBool("isDead", true);
+                if (animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.5f && !animator.IsInTransition(0))
+                    playerStats.health -= 100;
+            }
+            else
+                animator.SetBool("isDead", false);
         }
 
     }
