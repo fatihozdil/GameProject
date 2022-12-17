@@ -6270,6 +6270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 0
+  playerStats: {fileID: 2665634846007899213}
   healthbar: {fileID: 1233858384195747060}
 --- !u!1 &1254162032646745827
 GameObject:

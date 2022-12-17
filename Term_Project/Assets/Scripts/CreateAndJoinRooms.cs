@@ -30,6 +30,8 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.CreateRoom(createInput.text);
         name = playerName.text;
+        Debug.Log(name);
+
     }
 
     // joint to the created photon room

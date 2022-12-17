@@ -14,8 +14,6 @@ public class InGameMenu : MonoBehaviour
     void Start()
     {
         isOpen = false;
-        playerStats = GetComponent<PlayerStats>();
-        PlayerStats.name = CreateAndJoinRooms.name; 
     }
 
     // Update is called once per frame
