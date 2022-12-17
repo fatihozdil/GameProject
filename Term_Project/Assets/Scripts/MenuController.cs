@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour
 {
 
-    public GameObject MainBg;
-
+    void Start(){
+    }
     public void ButtonAction(int num){
         SceneManager.LoadScene(num);
     }
@@ -16,11 +16,6 @@ public class MenuController : MonoBehaviour
     public void QuitButton(){
         Application.Quit();
     }
-
-    public void ChangeBack(){
-        MainBg.SetActive(false);
-    }
-
     public void Disconnect(){
         PhotonNetwork.Disconnect();
     }

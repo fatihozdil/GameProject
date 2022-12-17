@@ -7,13 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class InGameMenu : MonoBehaviour
 {
-    
     public GameObject inGameObject;
+    public PlayerStats playerStats;
     private bool isOpen;
 
     void Start()
     {
         isOpen = false;
+        playerStats = GetComponent<PlayerStats>();
+        PlayerStats.name = CreateAndJoinRooms.name; 
     }
 
     // Update is called once per frame
