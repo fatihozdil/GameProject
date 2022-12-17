@@ -11,21 +11,34 @@ public class Combat : MonoBehaviour
     private float xDragEnd = 0f;
     private float yDragEnd = 0f;
     public Collider coll;
+    private PlayerStats pt;
+    bool speedChanged;
+    float slowSpeed;
     //public CinemachineFreeLook freeLook;
     void Start()
     {
        animator = GetComponent<Animator>(); 
        coll.enabled = false;
+       pt=GetComponent<PlayerStats>();
+       speedChanged=false;
+       slowSpeed=animator.speed*0.5f;
+       Debug.Log(animator.speed);
+       Debug.Log(slowSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButton(1)){
-        animator.SetBool("shieldUp", true);
+            animator.SetBool("shieldUp", true);
+            animator.speed=slowSpeed;
+        Debug.Log(animator.speed);
+        
     }
     else{
+
         animator.SetBool("shieldUp", false);
+        animator.speed=pt.getSpeed();
     }
 
         if( Input.GetMouseButton(0) )

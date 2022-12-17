@@ -2564,7 +2564,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  speed: 0.8
   jumpHeight: 1
 --- !u!1 &1253618274575303527
 GameObject:

@@ -25,7 +25,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
-        playerSpeed = playerStats.speed;
+        playerSpeed = playerStats.getSpeed();
         tempspeed = playerSpeed;
         photonView = GetComponent<PhotonView>();
     }

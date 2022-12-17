@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public int health;
-    public float speed;
+    private float speed=0.8f;
     public float jumpHeight;
     public static string name; 
 
@@ -19,5 +19,11 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+    public void setSpeed(float speed){
+        this.speed=speed;
+    }
+    public float getSpeed(){
+        return this.speed;
     }
 }
