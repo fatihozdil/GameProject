@@ -16,12 +16,14 @@ public class ThirdPersonMovement : MonoBehaviour
     Vector3 jumpv;
     AniCons aniCons;
     private PlayerStats playerStats;
-
+    private Animator animator;
+    private float propel2 = 0.2f;
 
     PhotonView photonView;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
         playerSpeed = playerStats.speed;
         tempspeed = playerSpeed;
@@ -33,13 +35,21 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (photonView.IsMine && playerStats.health > 0)
         {
-
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
             //Return playerSpeed to the old value after landing so player won't get faster with every jump
-            if (controller.isGrounded)
+            
+            if(animator.GetCurrentAnimatorStateInfo(0).IsName("shieldUp")){
+                playerSpeed *= propel2;
+            }
+                     
+            
+            else if (controller.isGrounded)
                 playerSpeed = tempspeed;
+
+            
+
 
             if (Input.GetButtonDown("Jump") && controller.isGrounded)
             {

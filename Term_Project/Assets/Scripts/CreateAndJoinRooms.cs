@@ -6,6 +6,8 @@ using Photon.Pun;
 using TMPro;
 public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
 {
+    public TMP_InputField playerName;
+    public static string name;
     public TMP_InputField createInput;
     public TMP_InputField joinInput;
     public GameObject voiceChatManager;
@@ -15,7 +17,6 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     void Start()
     {
         voiceChatManagerScript = voiceChatManager.GetComponent<VoiceChatManager>();
-
     }
 
     // Update is called once per frame
@@ -28,12 +29,14 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         PhotonNetwork.CreateRoom(createInput.text);
+        name = playerName.text;
     }
 
     // joint to the created photon room
     public void JoinRoom()
     {
         PhotonNetwork.JoinRoom(joinInput.text);
+        name = playerName.text;
     }
 
 
