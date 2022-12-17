@@ -909,7 +909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a53d24a4b094d9499abe592ee763c38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  createAndJoinRooms: {fileID: 0}
   inGameObject: {fileID: 555689324}
   playerStats: {fileID: 0}
 --- !u!4 &302207565
@@ -3140,9 +3139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7a6b85c0ec20c4cb265bd105993949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: 
-  createAndJoinRooms: {fileID: 0}
-  MainBg: {fileID: 0}
 --- !u!4 &1961570653
 Transform:
   m_ObjectHideFlags: 0
