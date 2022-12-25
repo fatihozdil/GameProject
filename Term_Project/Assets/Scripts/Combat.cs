@@ -11,6 +11,9 @@ public class Combat : MonoBehaviourPunCallbacks, IPunObservable
     private float xDragEnd = 0f;
     private float yDragEnd = 0f;
     public Collider coll;
+    private PlayerStats pt;
+    bool speedChanged;
+    float slowSpeed;
 
     private bool up;
     private bool down;
@@ -25,7 +28,11 @@ public class Combat : MonoBehaviourPunCallbacks, IPunObservable
     {
         animator = GetComponent<Animator>();
         coll.enabled = false;
-
+        pt=GetComponent<PlayerStats>();
+        speedChanged=false;
+        slowSpeed=animator.speed*0.5f;
+        Debug.Log(animator.speed);
+        Debug.Log(slowSpeed);
 
         photonView = GetComponent<PhotonView>();
         up = false;
@@ -45,11 +52,14 @@ public class Combat : MonoBehaviourPunCallbacks, IPunObservable
             {
                 shieldUp = true;
                 animator.SetBool("shieldUp", shieldUp);
+                animator.speed=slowSpeed;
+                Debug.Log(animator.speed);
             }
             else
             {
                 shieldUp = false;
                 animator.SetBool("shieldUp", shieldUp);
+                animator.speed=pt.getSpeed();
             }
 
             if (Input.GetMouseButton(0))
